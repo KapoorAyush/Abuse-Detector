@@ -8,17 +8,17 @@ def isAbusive(comment):
     check_abusive=profanity.contains_profanity(comment)
     return check_abusive
 
-app = Flask(__name__)
+application = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@application.route('/', methods=['GET'])
 def send_index():
     return send_from_directory('./www', "index.html")
 
-@app.route('/<path:path>', methods=['GET'])
+@application.route('/<path:path>', methods=['GET'])
 def send_root(path):
     return send_from_directory('./www', path)
 
-@app.route('/api/mpg', methods=['POST'])
+@application.route('/api/mpg', methods=['POST'])
 def calc_mpg():
 
     content = request.get_json(force=True)
@@ -26,11 +26,10 @@ def calc_mpg():
 
     comment = content['text']
     check_abuse=isAbusive(comment)
-
     response = {"id":str(uuid.uuid4()),"abusive":check_abuse}
     return jsonify(response)
 
 
 if __name__ == '__main__':
-    app.run(host= '0.0.0.0',debug=True)
+    application.run(host= '0.0.0.0',debug=True)
     
