@@ -2,3 +2,4 @@ Used a library better_profanity to detect abusive words in a message. However, t
 Application returns an alert whether the message has abusive content or the message is safe.
 For backend - Python/Flask
 Frontend- Simple HTML,CSS and a bit of React.
+Also deployed to AWS - http://abusivecontentdetector-env.eba-kmibcg23.ap-south-1.elasticbeanstalk.com/
